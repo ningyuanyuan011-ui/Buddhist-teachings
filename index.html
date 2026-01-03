@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ning Yuanyuan's Buddhist Practice Journal</title>
+    <title>My Buddhist Practice Journal</title>
     <style>
         * {
             margin: 0;
@@ -14,11 +14,73 @@
             font-family: 'Georgia', serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+        }
+        .main-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+        
+        /* 左侧边栏 */
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px 20px;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+        }
+        .sidebar h2 {
+            color: #2a5298;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .sidebar-subtitle {
+            color: #666;
+            text-align: center;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .category-list {
+            list-style: none;
+        }
+        .category-item {
+            margin-bottom: 10px;
+        }
+        .category-item a {
+            display: block;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            color: #2a5298;
+            text-decoration: none;
+            border-radius: 8px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
+            font-size: 1.05em;
+        }
+        .category-item a:hover {
+            background: #667eea;
+            color: white;
+            border-left-color: #2a5298;
+            transform: translateX(5px);
+        }
+        .category-item a.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-left-color: #ffd700;
+        }
+        .category-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        /* 主内容区 */
+        .content-area {
+            flex: 1;
+            padding: 40px;
         }
         .container {
-            max-width: 900px;
-            margin: 0 auto;
             background: white;
             border-radius: 10px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -40,6 +102,13 @@
         }
         .content {
             padding: 50px 40px;
+        }
+        .section-title {
+            color: #2a5298;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
         }
         .post-list {
             list-style: none;
@@ -76,43 +145,92 @@
             color: #555;
             line-height: 1.6;
         }
-        @media (max-width: 768px) {
+        
+        /* 移动端适配 */
+        @media (max-width: 968px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                padding: 20px;
+            }
+            .content-area {
+                padding: 20px;
+            }
             h1 {
                 font-size: 2em;
-            }
-            .content {
-                padding: 30px 20px;
-            }
-            header {
-                padding: 40px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🙏 My Buddhist Practice Journal</h1>
-            <p class="subtitle">Recording Every Step of Growth</p>
-        </header>
-        
-        <div class="content">
-            <h2 style="margin-bottom: 30px; color: #2a5298;">Recent Posts</h2>
-            <ul class="post-list">
-                <li class="post-item">
-                    <h3 class="post-title">
-                        <a href="the-hammer.html">🔨 The Hammer: Are You Your Own Worst Enemy?</a>
-                    </h3>
-                    <p class="post-date">January 3, 2026</p>
-                    <p class="post-excerpt">
-                        Ever feel like you're your own worst enemy? Getting in your own way, sabotaging your success, relationships, and happiness? Today we'll explore why this happens and how to stop it...
-                    </p>
+    <div class="main-container">
+        <!-- 左侧边栏 -->
+        <aside class="sidebar">
+            <h2>🙏 Categories</h2>
+            <p class="sidebar-subtitle">Explore the Teachings</p>
+            <ul class="category-list">
+                <li class="category-item">
+                    <a href="index.html" class="active">
+                        <span class="category-icon">🎓</span>
+                        Bennie's Teachings
+                    </a>
                 </li>
-                
-                <!-- Add more articles here in the future -->
-                
+                <li class="category-item">
+                    <a href="sutras.html">
+                        <span class="category-icon">📿</span>
+                        Sutra Translations
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="reflections.html">
+                        <span class="category-icon">💭</span>
+                        Daily Reflections
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="videos.html">
+                        <span class="category-icon">🎥</span>
+                        Video Teachings
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="journal.html">
+                        <span class="category-icon">📔</span>
+                        My Practice Journal
+                    </a>
+                </li>
             </ul>
-        </div>
+        </aside>
+        
+        <!-- 主内容区 -->
+        <main class="content-area">
+            <div class="container">
+                <header>
+                    <h1>🙏 Bennie's Teachings</h1>
+                    <p class="subtitle">Wisdom from My Teacher</p>
+                </header>
+                
+                <div class="content">
+                    <h2 class="section-title">Latest Teachings</h2>
+                    <ul class="post-list">
+                        <li class="post-item">
+                            <h3 class="post-title">
+                                <a href="the-hammer.html">🔨 The Hammer: Are You Your Own Worst Enemy?</a>
+                            </h3>
+                            <p class="post-date">January 3, 2026</p>
+                            <p class="post-excerpt">
+                                Ever feel like you're your own worst enemy? Getting in your own way, sabotaging your success, relationships, and happiness? Today we'll explore why this happens and how to stop it...
+                            </p>
+                        </li>
+                        
+                        <!-- Add more teachings here -->
+                        
+                    </ul>
+                </div>
+            </div>
+        </main>
     </div>
 </body>
 </html>
