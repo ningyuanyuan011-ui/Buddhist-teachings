@@ -1,14 +1,1 @@
-title: My Practice Journal
-description: Recording every step of growth
-baseurl: ""
-url: "https://ningyuanyuan011-ui.github.io/Buddhist-teachings"
 
-markdown: kramdown
-theme: minima
-
-author:
-  name: Your Name
-
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
