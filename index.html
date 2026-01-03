@@ -1,22 +1,118 @@
----
-layout: default
-title: Home
----
-
-<div class="home">
-  <h1 class="page-heading">Recent Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li class="post-item">
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h2>
-        <p class="post-excerpt">{{ post.excerpt }}</p>
-      </li>
-    {% endfor %}
-  </ul>
-</div>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宁愿愿的佛法修行日记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 50px 40px;
+        }
+        .post-list {
+            list-style: none;
+        }
+        .post-item {
+            background: #f8f9fa;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s;
+        }
+        .post-item:hover {
+            transform: translateX(10px);
+        }
+        .post-title {
+            font-size: 1.8em;
+            color: #2a5298;
+            margin-bottom: 10px;
+        }
+        .post-title a {
+            color: #2a5298;
+            text-decoration: none;
+        }
+        .post-title a:hover {
+            color: #667eea;
+        }
+        .post-date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        .post-excerpt {
+            color: #555;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .content {
+                padding: 30px 20px;
+            }
+            header {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🙏 Ellie的佛法修行笔记</h1>
+            <p class="subtitle">记录每一天的学习</p>
+        </header>
+        
+        <div class="content">
+            <h2 style="margin-bottom: 30px; color: #2a5298;">最新文章</h2>
+            <ul class="post-list">
+                <li class="post-item">
+                    <h3 class="post-title">
+                        <a href="the-hammer.html">🔨 The Hammer: Are You Your Own Worst Enemy?</a>
+                    </h3>
+                    <p class="post-date">2026年1月3日</p>
+                    <p class="post-excerpt">
+                        你是否感觉自己是自己最大的敌人？用负面情绪破坏自己的成功、关系和幸福？今天我们将探讨为什么会这样，以及如何停止这种自我破坏...
+                    </p>
+                </li>
+                
+                <!-- 以后在这里添加更多文章 -->
+                
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
