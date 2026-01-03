@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Practice Journal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .main-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 20px;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+        }
+        .sidebar h2 {
+            color: #2a5298;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .sidebar-subtitle {
+            color: #666;
+            text-align: center;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .category-list {
+            list-style: none;
+        }
+        .category-item {
+            margin-bottom: 10px;
+        }
+        .category-item a {
+            display: block;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            color: #2a5298;
+            text-decoration: none;
+            border-radius: 8px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
+            font-size: 1.05em;
+        }
+        .category-item a:hover {
+            background: #667eea;
+            color: white;
+            border-left-color: #2a5298;
+            transform: translateX(5px);
+        }
+        .category-item a.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-left-color: #ffd700;
+        }
+        .category-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .content-area {
+            flex: 1;
+            padding: 40px;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #16a085 0%, #27ae60 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 50px 40px;
+        }
+        .section-title {
+            color: #16a085;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #27ae60;
+        }
+        
+        /* 日记条目样式 */
+        .journal-list {
+            list-style: none;
+        }
+        .journal-entry {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 35px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #27ae60;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+        .journal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+        }
+        .journal-date {
+            font-size: 1.3em;
+            color: #16a085;
+            font-weight: bold;
+        }
+        .journal-mood {
+            font-size: 2em;
+        }
+        .journal-text {
+            color: #2c3e50;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+        .journal-tags {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        .tag {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 968px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                padding: 20px;
+            }
+            .content-area {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .journal-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .journal-mood {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <aside class="sidebar">
+            <h2>🙏 Categories</h2>
+            <p class="sidebar-subtitle">Explore the Teachings</p>
+            <ul class="category-list">
+                <li class="category-item">
+                    <a href="index.html">
+                        <span class="category-icon">🎓</span>
+                        Bennie's Teachings
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="sutras.html">
+                        <span class="category-icon">📿</span>
+                        Sutra Translations
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="reflections.html">
+                        <span class="category-icon">💭</span>
+                        Daily Reflections
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="videos.html">
+                        <span class="category-icon">🎥</span>
+                        Video Teachings
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="journal.html" class="active">
+                        <span class="category-icon">📔</span>
+                        My Practice Journal
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content-area">
+            <div class="container">
+                <header>
+                    <h1>📔 My Practice Journal</h1>
+                    <p class="subtitle">Personal Reflections on the Path</p>
+                </header>
+                
+                <div class="content">
+                    <h2 class="section-title">Recent Entries</h2>
+                    <ul class="journal-list">
+                        
+                        <!-- 示例日记 1 -->
+                        <li class="journal-entry">
+                            <div class="journal-header">
+                                <div class="journal-date">January 3, 2026</div>
+                                <div class="journal-mood">🌟</div>
+                            </div>
+                            <div class="journal-text">
+                                <p>Today I reflected deeply on the teaching about afflictions. I noticed how quickly anger arose when someone cut me off in traffic. Instead of reacting, I paused and watched the feeling. It was like observing a cloud passing by. The anger dissipated naturally.</p>
+                                <p>This practice of observation is becoming easier. I'm learning to create space between stimulus and response.</p>
+                            </div>
+                            <div class="journal-tags">
+                                <span class="tag">Mindfulness</span>
+                                <span class="tag">Anger Management</span>
+                                <span class="tag">Progress</span>
+                            </div>
+                        </li>
+                        
+                        <!-- 示例日记 2 -->
+                        <li class="journal-entry">
+                            <div class="journal-header">
+                                <div class="journal-date">January 2, 2026</div>
+                                <div class="journal-mood">🙏</div>
+                            </div>
+                            <div class="journal-text">
+                                <p>Meditated for 30 minutes this morning. The mind was restless at first, but gradually settled. I'm grateful for this practice and for Bennie's patient guidance.</p>
+                            </div>
+                            <div class="journal-tags">
+                                <span class="tag">Meditation</span>
+                                <span class="tag">Gratitude</span>
+                            </div>
+                        </li>
+                        
+                        <!-- 在这里添加更多日记 -->
+                        
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
