@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Reflections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .main-container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 20px;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+        }
+        .sidebar h2 {
+            color: #2a5298;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .sidebar-subtitle {
+            color: #666;
+            text-align: center;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        .category-list {
+            list-style: none;
+        }
+        .category-item {
+            margin-bottom: 10px;
+        }
+        .category-item a {
+            display: block;
+            padding: 15px 20px;
+            background: #f8f9fa;
+            color: #2a5298;
+            text-decoration: none;
+            border-radius: 8px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
+            font-size: 1.05em;
+        }
+        .category-item a:hover {
+            background: #667eea;
+            color: white;
+            border-left-color: #2a5298;
+            transform: translateX(5px);
+        }
+        .category-item a.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-left-color: #ffd700;
+        }
+        .category-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .content-area {
+            flex: 1;
+            padding: 40px;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #f39c12 0%, #e74c3c 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 50px 40px;
+        }
+        .section-title {
+            color: #f39c12;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e74c3c;
+        }
+        
+        /* 只言片语卡片样式 */
+        .reflections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            list-style: none;
+        }
+        .reflection-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-left: 5px solid #f39c12;
+        }
+        .reflection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .reflection-text {
+            font-size: 1.3em;
+            line-height: 1.8;
+            color: #2c3e50;
+            font-style: italic;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .reflection-date {
+            text-align: right;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 15px;
+        }
+        .quote-mark {
+            font-size: 3em;
+            color: #f39c12;
+            opacity: 0.3;
+            line-height: 0;
+        }
+        
+        @media (max-width: 968px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                padding: 20px;
+            }
+            .content-area {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .reflections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <aside class="sidebar">
+            <h2>🙏 Categories</h2>
+            <p class="sidebar-subtitle">Explore the Teachings</p>
+            <ul class="category-list">
+                <li class="category-item">
+                    <a href="index.html">
+                        <span class="category-icon">🎓</span>
+                        Bennie's Teachings
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="sutras.html">
+                        <span class="category-icon">📿</span>
+                        Sutra Translations
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="reflections.html" class="active">
+                        <span class="category-icon">💭</span>
+                        Daily Reflections
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="videos.html">
+                        <span class="category-icon">🎥</span>
+                        Video Teachings
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="journal.html">
+                        <span class="category-icon">📔</span>
+                        My Practice Journal
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        
+        <main class="content-area">
+            <div class="container">
+                <header>
+                    <h1>💭 Daily Reflections</h1>
+                    <p class="subtitle">Short Gems of Buddhist Wisdom</p>
+                </header>
+                
+                <div class="content">
+                    <h2 class="section-title">Words to Contemplate</h2>
+                    <ul class="reflections-grid">
+                        
+                        <!-- 示例卡片 1 -->
+                        <li class="reflection-card">
+                            <div class="quote-mark">"</div>
+                            <p class="reflection-text">
+                                The mind is everything. What you think, you become.
+                            </p>
+                            <p class="reflection-date">January 3, 2026</p>
+                        </li>
+                        
+                        <!-- 示例卡片 2 -->
+                        <li class="reflection-card">
+                            <div class="quote-mark">"</div>
+                            <p class="reflection-text">
+                                When the student is ready, the teacher appears.
+                            </p>
+                            <p class="reflection-date">January 2, 2026</p>
+                        </li>
+                        
+                        <!-- 示例卡片 3 -->
+                        <li class="reflection-card">
+                            <div class="quote-mark">"</div>
+                            <p class="reflection-text">
+                                Peace comes from within. Do not seek it without.
+                            </p>
+                            <p class="reflection-date">January 1, 2026</p>
+                        </li>
+                        
+                        <!-- 在这里添加更多只言片语 -->
+                        
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
