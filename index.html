@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Buddhist Practice Journal</title>
+    <title>Bennie's Teachings - Buddhist Wisdom</title>
     <style>
         * {
             margin: 0;
@@ -81,23 +81,26 @@
             padding: 40px;
         }
         .container {
+            max-width: 900px;
+            margin: 0 auto;
             background: white;
             border-radius: 10px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
         }
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
             color: white;
             padding: 60px 40px;
             text-align: center;
+            border-radius: 10px 10px 0 0;
         }
         h1 {
             font-size: 2.5em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .subtitle {
             font-size: 1.2em;
+            font-style: italic;
             opacity: 0.9;
         }
         .content {
@@ -106,44 +109,68 @@
         .section-title {
             color: #2a5298;
             font-size: 2em;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 3px solid #667eea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .view-all-link {
+            font-size: 0.5em;
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .view-all-link:hover {
+            color: #2a5298;
         }
         .post-list {
             list-style: none;
         }
         .post-item {
+            margin-bottom: 40px;
+            padding: 25px;
             background: #f8f9fa;
-            padding: 30px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #667eea;
-            transition: transform 0.3s;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s;
         }
         .post-item:hover {
-            transform: translateX(10px);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-left-color: #2a5298;
         }
         .post-title {
-            font-size: 1.8em;
-            color: #2a5298;
             margin-bottom: 10px;
         }
         .post-title a {
             color: #2a5298;
             text-decoration: none;
+            font-size: 1.3em;
+            transition: color 0.3s;
         }
         .post-title a:hover {
             color: #667eea;
         }
         .post-date {
-            color: #666;
+            color: #888;
             font-size: 0.9em;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         .post-excerpt {
             color: #555;
             line-height: 1.6;
+        }
+        .new-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.7em;
+            font-weight: bold;
+            margin-left: 10px;
         }
         
         /* 移动端适配 */
@@ -213,24 +240,42 @@
                 </header>
                 
                 <div class="content">
-                    <h2 class="section-title">Latest Teachings</h2>
-                    <ul class="post-list">
-                        <li class="post-item">
-                            <h3 class="post-title">
-                                <a href="the-hammer.html">🔨 The Hammer: Are You Your Own Worst Enemy?</a>
-                            </h3>
-                            <p class="post-date">January 3, 2026</p>
-                            <p class="post-excerpt">
-                                Ever feel like you're your own worst enemy? Getting in your own way, sabotaging your success, relationships, and happiness? Today we'll explore why this happens and how to stop it...
-                            </p>
-                        </li>
-                        
-                        <!-- Add more teachings here -->
-                        
+                    <h2 class="section-title">
+                        Latest Teachings
+                        <a href="bennies-teachings.html" class="view-all-link">View All →</a>
+                    </h2>
+                    <ul class="post-list" id="postList">
+                        <!-- 文章将通过 JavaScript 自动加载 -->
                     </ul>
                 </div>
             </div>
         </main>
     </div>
+
+    <!-- 引入共享的文章数据 -->
+    <script src="articles-data.js"></script>
+    <script>
+        // 渲染最新的 5 篇文章
+        function renderLatestPosts() {
+            const postList = document.getElementById('postList');
+            const latestArticles = getLatestArticles(5); // 只显示最新5篇
+            
+            postList.innerHTML = latestArticles.map(article => `
+                <li class="post-item">
+                    <h3 class="post-title">
+                        <a href="${article.url}">
+                            ${article.icon} ${article.title}
+                            ${article.isNew ? '<span class="new-badge">NEW</span>' : ''}
+                        </a>
+                    </h3>
+                    <p class="post-date">${article.dateDisplay}</p>
+                    <p class="post-excerpt">${article.excerpt}</p>
+                </li>
+            `).join('');
+        }
+        
+        // 页面加载时渲染
+        renderLatestPosts();
+    </script>
 </body>
 </html>
