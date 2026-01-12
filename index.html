@@ -233,22 +233,59 @@
                 <div class="content">
                     <h2 class="section-title">Latest Teachings</h2>
                     <ul class="post-list" id="postList">
-                        <!-- 文章会自动从 articles-data.js 加载 -->
+                        <!-- 文章列表将通过 JavaScript 自动生成 -->
                     </ul>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- 引入文章数据文件 -->
-    <script src="articles-data.js"></script>
     <script>
-        // 渲染所有文章
+        // ==========================================
+        // 📝 文章数据 - 每次添加新文章就在这里加一条
+        // ==========================================
+        const articlesData = [
+            {
+                title: "Your Thoughts Are Physically Building Your Brain. Here's the Manual.",
+                icon: "🧠",
+                date: "2026-01-12",
+                dateDisplay: "January 12, 2026",
+                excerpt: "Discover how your thoughts literally reshape your brain's neural pathways. Learn the science behind neuroplasticity and practical techniques to build the brain you want...",
+                url: "your-thoughts-are-building-your-brain.html",
+                isNew: true
+            },
+            {
+                title: "The Hammer: Are You Your Own Worst Enemy?",
+                icon: "🔨",
+                date: "2026-01-03",
+                dateDisplay: "January 3, 2026",
+                excerpt: "Ever feel like you're your own worst enemy? Getting in your own way, sabotaging your success, relationships, and happiness? Today we'll explore why this happens and how to stop it...",
+                url: "the-hammer.html",
+                isNew: false
+            }
+            // 👇 在这里添加新文章
+            // {
+            //     title: "新文章标题",
+            //     icon: "📖",
+            //     date: "2026-01-15",
+            //     dateDisplay: "January 15, 2026",
+            //     excerpt: "文章简介...",
+            //     url: "新文章.html",
+            //     isNew: true
+            // }
+        ];
+
+        // 渲染文章列表
         function renderPosts() {
             const postList = document.getElementById('postList');
-            const allArticles = getAllArticles(); // 从 articles-data.js 获取
             
-            postList.innerHTML = allArticles.map(article => `
+            // 按日期排序（最新的在前）
+            const sortedArticles = [...articlesData].sort((a, b) => {
+                return new Date(b.date) - new Date(a.date);
+            });
+            
+            // 生成 HTML
+            postList.innerHTML = sortedArticles.map(article => `
                 <li class="post-item">
                     <h3 class="post-title">
                         <a href="${article.url}">
@@ -262,7 +299,7 @@
             `).join('');
         }
         
-        // 页面加载时自动渲染
+        // 页面加载完成后自动渲染
         renderPosts();
     </script>
 </body>
