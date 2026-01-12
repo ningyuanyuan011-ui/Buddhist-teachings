@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bennie's Teachings - Buddhist Wisdom</title>
+    <title>My Buddhist Practice Journal</title>
     <style>
         * {
             margin: 0;
@@ -109,21 +109,9 @@
         .section-title {
             color: #2a5298;
             font-size: 2em;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             padding-bottom: 10px;
             border-bottom: 3px solid #667eea;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .view-all-link {
-            font-size: 0.5em;
-            color: #667eea;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .view-all-link:hover {
-            color: #2a5298;
         }
         .post-list {
             list-style: none;
@@ -185,6 +173,9 @@
             .content-area {
                 padding: 20px;
             }
+            header {
+                padding: 40px 20px;
+            }
             h1 {
                 font-size: 2em;
             }
@@ -240,27 +231,24 @@
                 </header>
                 
                 <div class="content">
-                    <h2 class="section-title">
-                        Latest Teachings
-                        <a href="bennies-teachings.html" class="view-all-link">View All →</a>
-                    </h2>
+                    <h2 class="section-title">Latest Teachings</h2>
                     <ul class="post-list" id="postList">
-                        <!-- 文章将通过 JavaScript 自动加载 -->
+                        <!-- 文章会自动从 articles-data.js 加载 -->
                     </ul>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- 引入共享的文章数据 -->
+    <!-- 引入文章数据文件 -->
     <script src="articles-data.js"></script>
     <script>
-        // 渲染最新的 5 篇文章
-        function renderLatestPosts() {
+        // 渲染所有文章
+        function renderPosts() {
             const postList = document.getElementById('postList');
-            const latestArticles = getLatestArticles(5); // 只显示最新5篇
+            const allArticles = getAllArticles(); // 从 articles-data.js 获取
             
-            postList.innerHTML = latestArticles.map(article => `
+            postList.innerHTML = allArticles.map(article => `
                 <li class="post-item">
                     <h3 class="post-title">
                         <a href="${article.url}">
@@ -274,8 +262,8 @@
             `).join('');
         }
         
-        // 页面加载时渲染
-        renderLatestPosts();
+        // 页面加载时自动渲染
+        renderPosts();
     </script>
 </body>
 </html>
