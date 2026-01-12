@@ -22,7 +22,6 @@
             min-height: 100vh;
         }
         
-        /* 左侧边栏 */
         .sidebar {
             width: 280px;
             background: rgba(255, 255, 255, 0.95);
@@ -75,7 +74,6 @@
             font-size: 1.2em;
         }
         
-        /* 主内容区 */
         .content-area {
             flex: 1;
             padding: 40px;
@@ -161,7 +159,6 @@
             margin-left: 10px;
         }
         
-        /* 移动端适配 */
         @media (max-width: 968px) {
             .main-container {
                 flex-direction: column;
@@ -184,7 +181,6 @@
 </head>
 <body>
     <div class="main-container">
-        <!-- 左侧边栏 -->
         <aside class="sidebar">
             <h2>🙏 Categories</h2>
             <p class="sidebar-subtitle">Explore the Teachings</p>
@@ -222,7 +218,6 @@
             </ul>
         </aside>
         
-        <!-- 主内容区 -->
         <main class="content-area">
             <div class="container">
                 <header>
@@ -233,7 +228,6 @@
                 <div class="content">
                     <h2 class="section-title">Latest Teachings</h2>
                     <ul class="post-list" id="postList">
-                        <!-- 文章列表将通过 JavaScript 自动生成 -->
                     </ul>
                 </div>
             </div>
@@ -241,19 +235,16 @@
     </div>
 
     <script>
-        // ==========================================
-        // 📝 文章数据 - 每次添加新文章就在这里加一条
-        // ==========================================
         const articlesData = [
-          {
-    title: "The Ten Wholesome Actions: Foundation of Buddhist Practice",
-    icon: "🙏",
-    date: "2026-01-13",
-    dateDisplay: "January 13, 2026",
-    excerpt: "In Buddhism, the ten wholesome actions are the foundation of all spiritual development, like the earth that nourishes the fruits of Buddhahood and Bodhisattvas.",
-    url: "ten-wholesome-actions.html",
-    isNew: true
-}
+            {
+                title: "The Ten Wholesome Actions: Foundation of Buddhist Practice",
+                icon: "🙏",
+                date: "2026-01-13",
+                dateDisplay: "January 13, 2026",
+                excerpt: "In Buddhism, the ten wholesome actions are the foundation of all spiritual development, like the earth that nourishes the fruits of Buddhahood and Bodhisattvas.",
+                url: "ten-wholesome-actions.html",
+                isNew: true
+            },
             {
                 title: "Your Thoughts Are Physically Building Your Brain. Here's the Manual.",
                 icon: "🧠",
@@ -261,7 +252,7 @@
                 dateDisplay: "January 12, 2026",
                 excerpt: "Discover how your thoughts literally reshape your brain's neural pathways. Learn the science behind neuroplasticity and practical techniques to build the brain you want...",
                 url: "your-thoughts-are-building-your-brain.html",
-                isNew: true
+                isNew: false
             },
             {
                 title: "The Hammer: Are You Your Own Worst Enemy?",
@@ -272,28 +263,14 @@
                 url: "the-hammer.html",
                 isNew: false
             }
-            // 👇 在这里添加新文章
-            // {
-            //     title: "新文章标题",
-            //     icon: "📖",
-            //     date: "2026-01-15",
-            //     dateDisplay: "January 15, 2026",
-            //     excerpt: "文章简介...",
-            //     url: "新文章.html",
-            //     isNew: true
-            // }
         ];
 
-        // 渲染文章列表
         function renderPosts() {
             const postList = document.getElementById('postList');
-            
-            // 按日期排序（最新的在前）
             const sortedArticles = [...articlesData].sort((a, b) => {
                 return new Date(b.date) - new Date(a.date);
             });
             
-            // 生成 HTML
             postList.innerHTML = sortedArticles.map(article => `
                 <li class="post-item">
                     <h3 class="post-title">
@@ -308,7 +285,6 @@
             `).join('');
         }
         
-        // 页面加载完成后自动渲染
         renderPosts();
     </script>
 </body>
