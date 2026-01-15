@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buddhist Teachings - Wisdom for Daily Life</title>
+    <title>Buddhist Teachings</title>
     <style>
         * {
             margin: 0;
@@ -11,156 +11,388 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Georgia', serif;
-            line-height: 1.8;
-            color: #2c3e50;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
         }
         .container {
-            max-width: 1000px;
+            display: flex;
+            max-width: 1400px;
             margin: 0 auto;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 280px;
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px 20px;
+            box-shadow: 2px 0 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
         }
-        header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            margin-bottom: 50px;
-        }
-        h1 {
-            font-size: 3em;
+        .sidebar h2 {
+            color: #2a5298;
             margin-bottom: 20px;
-            font-weight: 700;
+            font-size: 1.5em;
+            text-align: center;
+        }
+        .sidebar .emoji {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .category-list {
+            list-style: none;
+            flex: 1;
+        }
+        .category-item {
+            margin-bottom: 10px;
+        }
+        .category-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s;
+            background: white;
+        }
+        .category-link:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateX(5px);
+        }
+        .category-icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        /* 日历样式 */
+        .calendar-widget {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #2a5298;
+            font-weight: bold;
+        }
+        .calendar-nav {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            user-select: none;
+        }
+        .calendar-nav:hover {
+            background: #f0f0f0;
+        }
+        .calendar-title {
+            font-size: 1em;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar-day-name {
+            text-align: center;
+            font-size: 0.75em;
+            color: #888;
+            padding: 5px 0;
+            font-weight: bold;
+        }
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            border-radius: 5px;
+            color: #666;
+            position: relative;
+        }
+        .calendar-day.other-month {
+            color: #ccc;
+        }
+        .calendar-day.today {
+            background: #e3f2fd;
+            font-weight: bold;
+            color: #2a5298;
+        }
+        .calendar-day.has-article {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .calendar-day.has-article:hover {
+            transform: scale(1.1);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5);
+        }
+        .calendar-day.has-article::after {
+            content: '📝';
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            font-size: 0.6em;
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        .subtitle {
-            font-size: 1.4em;
-            opacity: 0.95;
-            font-style: italic;
-        }
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        .article-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        .article-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-        .article-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .article-icon {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        .article-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .article-body {
-            padding: 30px;
-        }
-        .article-description {
-            font-size: 1.05em;
-            line-height: 1.6;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        .read-more {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-        .read-more:hover {
-            transform: scale(1.05);
-        }
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            color: white;
-            font-size: 0.95em;
+        .header p {
+            font-size: 1.2em;
             opacity: 0.9;
         }
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            header {
-                padding: 40px 20px;
-            }
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
+        .section-title {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .post-list {
+            list-style: none;
+        }
+        .post-item {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .post-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        .post-title {
+            color: #2a5298;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .post-link {
+            color: #2a5298;
+            text-decoration: none;
+        }
+        .post-link:hover {
+            text-decoration: underline;
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .post-description {
+            color: #333;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>☸️ Buddhist Teachings</h1>
-            <p class="subtitle">Wisdom for Daily Life and Spiritual Growth</p>
-        </header>
+        <aside class="sidebar">
+            <div class="emoji">🙏</div>
+            <h2>🙏 Categories</h2>
+            <ul class="category-list">
+                <li class="category-item">
+                    <a href="#" class="category-link">
+                        <span class="category-icon">📿</span>
+                        <span>Meditation</span>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="#" class="category-link">
+                        <span class="category-icon">🧘</span>
+                        <span>Mindfulness</span>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="#" class="category-link">
+                        <span class="category-icon">📖</span>
+                        <span>Sutras</span>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="#" class="category-link">
+                        <span class="category-icon">☸️</span>
+                        <span>Dharma Wheel</span>
+                    </a>
+                </li>
+                <li class="category-item">
+                    <a href="#" class="category-link">
+                        <span class="category-icon">🌸</span>
+                        <span>Wisdom</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- 日历组件 -->
+            <div class="calendar-widget">
+                <div class="calendar-header">
+                    <span class="calendar-nav" id="prevMonth">◀</span>
+                    <span class="calendar-title" id="calendarTitle"></span>
+                    <span class="calendar-nav" id="nextMonth">▶</span>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
+        </aside>
 
-        <div class="articles-grid">
-            <!-- Article 1: Mahayana and Hinayana Unity -->
-            <a href="mahayana-hinayana-unity.html" class="article-card">
-                <div class="article-header">
-                    <div class="article-icon">🕉️</div>
-                    <div class="article-title">The Unity of Mahayana and Hinayana</div>
-                </div>
-                <div class="article-body">
-                    <p class="article-description">
-                        Discover the historical unity of Buddhist traditions and understand why divisions arose from practical factors, not doctrinal conflicts. Learn about the harmonious essence of the Buddha's complete teachings.
-                    </p>
-                    <span class="read-more">Read Article →</span>
-                </div>
-            </a>
+        <main class="content-area">
+            <header class="header">
+                <h1>Buddhist Teachings</h1>
+                <p>Journey to Inner Peace and Wisdom</p>
+            </header>
 
-            <!-- Article 2: Your Thoughts Building Your Brain -->
-            <a href="your-thoughts-are-building-your-brain.html" class="article-card">
-                <div class="article-header">
-                    <div class="article-icon">🧠</div>
-                    <div class="article-title">Your Thoughts Are Building Your Brain</div>
-                </div>
-                <div class="article-body">
-                    <p class="article-description">
-                        Explore how your focused thoughts physically shape your neural pathways. Learn the five powerful principles for becoming the conscious architect of your own mind through neuronal remodeling.
-                    </p>
-                    <span class="read-more">Read Article →</span>
-                </div>
-            </a>
-        </div>
-
-        <footer>
-            <p>May all beings benefit from the Dharma 🙏</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">© 2025 Buddhist Teachings Collection</p>
-        </footer>
+            <h2 class="section-title">Latest Teachings</h2>
+            <ul class="post-list" id="postList"></ul>
+        </main>
     </div>
+
+    <script>
+        const articlesData = [
+            {
+                title: '🕉️ The Unity of Mahayana and Hinayana',
+                url: '/articles/mahayana-hinayana-unity.html',
+                date: '2025-01-15',
+                description: 'Exploring the historical unity and harmonious essence beyond sectarian divisions—understanding why Buddhism originated as one tradition.'
+            },
+            {
+                title: 'The Path of Mindfulness',
+                url: '/articles/mindfulness.html',
+                date: '2025-01-10',
+                description: 'Discover the transformative power of mindfulness meditation in daily life.'
+            },
+            {
+                title: 'Understanding the Four Noble Truths',
+                url: '/articles/four-noble-truths.html',
+                date: '2025-01-08',
+                description: 'An exploration of the fundamental teachings of Buddhism.'
+            },
+            {
+                title: 'Compassion in Action',
+                url: '/articles/compassion.html',
+                date: '2025-01-05',
+                description: 'How to cultivate and practice loving-kindness in everyday situations.'
+            }
+        ];
+
+        // 渲染文章列表
+        function renderPosts() {
+            const postList = document.getElementById('postList');
+            const sortedArticles = [...articlesData].sort((a, b) => {
+                return new Date(b.date) - new Date(a.date);
+            });
+            
+            postList.innerHTML = sortedArticles.map(article => `
+                <li class="post-item">
+                    <h3 class="post-title">
+                        <a href="${article.url}" class="post-link">${article.title}</a>
+                    </h3>
+                    <div class="post-meta">📅 ${article.date}</div>
+                    <p class="post-description">${article.description}</p>
+                </li>
+            `).join('');
+        }
+        
+        // 创建日期到文章的映射
+        function createDateMap() {
+            const map = {};
+            articlesData.forEach(article => {
+                map[article.date] = article.url;
+            });
+            return map;
+        }
+
+        // 日历功能
+        let currentDate = new Date();
+        const dateMap = createDateMap();
+
+        function renderCalendar(year, month) {
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const prevLastDay = new Date(year, month, 0);
+            const firstDayOfWeek = firstDay.getDay();
+            const daysInMonth = lastDay.getDate();
+            const daysInPrevMonth = prevLastDay.getDate();
+
+            const calendarTitle = document.getElementById('calendarTitle');
+            const calendarGrid = document.getElementById('calendarGrid');
+
+            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            calendarTitle.textContent = `${monthNames[month]} ${year}`;
+
+            let html = '';
+
+            const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+            dayNames.forEach(day => {
+                html += `<div class="calendar-day-name">${day}</div>`;
+            });
+
+            // 上个月的日期
+            for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+                const day = daysInPrevMonth - i;
+                html += `<div class="calendar-day other-month">${day}</div>`;
+            }
+
+            // 当前月的日期
+            const today = new Date();
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+                const hasArticle = dateMap[dateStr];
+                
+                let classes = 'calendar-day';
+                if (isToday) classes += ' today';
+                if (hasArticle) classes += ' has-article';
+                
+                const onClick = hasArticle ? `onclick="window.location.href='${hasArticle}'"` : '';
+                
+                html += `<div class="${classes}" ${onClick}>${day}</div>`;
+            }
+
+            // 下个月的日期
+            const remainingDays = 42 - (firstDayOfWeek + daysInMonth);
+            for (let day = 1; day <= remainingDays; day++) {
+                html += `<div class="calendar-day other-month">${day}</div>`;
+            }
+
+            calendarGrid.innerHTML = html;
+        }
+
+        // 日历导航
+        document.getElementById('prevMonth').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+        });
+
+        document.getElementById('nextMonth').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+        });
+
+        // 初始化
+        renderPosts();
+        renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+    </script>
 </body>
 </html>
