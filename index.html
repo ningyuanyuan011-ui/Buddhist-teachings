@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Buddhist Practice Journal</title>
+    <title>Buddhist Teachings - Wisdom for Daily Life</title>
     <style>
         * {
             margin: 0;
@@ -12,449 +12,155 @@
         }
         body {
             font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #2c3e50;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-        }
-        .main-container {
-            display: flex;
-            max-width: 1400px;
-            margin: 0 auto;
-            min-height: 100vh;
-        }
-        
-        .sidebar {
-            width: 280px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px 20px;
-            box-shadow: 2px 0 20px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-        }
-        .sidebar h2 {
-            color: #2a5298;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .sidebar-subtitle {
-            color: #666;
-            text-align: center;
-            font-size: 0.9em;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
-        .category-list {
-            list-style: none;
-            flex: 1;
-        }
-        .category-item {
-            margin-bottom: 10px;
-        }
-        .category-item a {
-            display: block;
-            padding: 15px 20px;
-            background: #f8f9fa;
-            color: #2a5298;
-            text-decoration: none;
-            border-radius: 8px;
-            border-left: 4px solid transparent;
-            transition: all 0.3s;
-            font-size: 1.05em;
-        }
-        .category-item a:hover {
-            background: #667eea;
-            color: white;
-            border-left-color: #2a5298;
-            transform: translateX(5px);
-        }
-        .category-item a.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-left-color: #ffd700;
-        }
-        .category-icon {
-            margin-right: 10px;
-            font-size: 1.2em;
-        }
-
-        /* 日历样式 */
-        .calendar-widget {
-            background: white;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-top: 20px;
-        }
-        .calendar-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            color: #2a5298;
-            font-weight: bold;
-        }
-        .calendar-nav {
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s;
-            user-select: none;
-        }
-        .calendar-nav:hover {
-            background: #f0f0f0;
-        }
-        .calendar-title {
-            font-size: 1em;
-        }
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
-        }
-        .calendar-day-name {
-            text-align: center;
-            font-size: 0.75em;
-            color: #888;
-            padding: 5px 0;
-            font-weight: bold;
-        }
-        .calendar-day {
-            aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85em;
-            border-radius: 5px;
-            color: #666;
-            position: relative;
-        }
-        .calendar-day.other-month {
-            color: #ccc;
-        }
-        .calendar-day.today {
-            background: #e3f2fd;
-            font-weight: bold;
-            color: #2a5298;
-        }
-        .calendar-day.has-article {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .calendar-day.has-article:hover {
-            transform: scale(1.1);
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5);
-        }
-        .calendar-day.has-article::after {
-            content: '📝';
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            font-size: 0.6em;
-        }
-        
-        .content-area {
-            flex: 1;
-            padding: 40px;
         }
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px 20px;
         }
         header {
-            background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             padding: 60px 40px;
             text-align: center;
-            border-radius: 10px 10px 0 0;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            margin-bottom: 50px;
         }
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         .subtitle {
-            font-size: 1.2em;
+            font-size: 1.4em;
+            opacity: 0.95;
             font-style: italic;
+        }
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .article-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .article-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .article-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .article-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .article-body {
+            padding: 30px;
+        }
+        .article-description {
+            font-size: 1.05em;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .read-more {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .read-more:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: white;
+            font-size: 0.95em;
             opacity: 0.9;
         }
-        .content {
-            padding: 50px 40px;
-        }
-        .section-title {
-            color: #2a5298;
-            font-size: 2em;
-            margin-bottom: 30px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-        }
-        .post-list {
-            list-style: none;
-        }
-        .post-item {
-            margin-bottom: 40px;
-            padding: 25px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-            transition: all 0.3s;
-        }
-        .post-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-left-color: #2a5298;
-        }
-        .post-title {
-            margin-bottom: 10px;
-        }
-        .post-title a {
-            color: #2a5298;
-            text-decoration: none;
-            font-size: 1.3em;
-            transition: color 0.3s;
-        }
-        .post-title a:hover {
-            color: #667eea;
-        }
-        .post-date {
-            color: #888;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-        .post-excerpt {
-            color: #555;
-            line-height: 1.6;
-        }
-        .new-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.7em;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-        
-        @media (max-width: 968px) {
-            .main-container {
-                flex-direction: column;
-            }
-            .sidebar {
-                width: 100%;
-                padding: 20px;
-            }
-            .content-area {
-                padding: 20px;
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
             }
             header {
                 padding: 40px 20px;
             }
-            h1 {
-                font-size: 2em;
+            .articles-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <aside class="sidebar">
-            <h2>🙏 Categories</h2>
-            <p class="sidebar-subtitle">Explore the Teachings</p>
-            <ul class="category-list">
-                <li class="category-item">
-                    <a href="index.html" class="active">
-                        <span class="category-icon">🎓</span>
-                        Bennie's Teachings
-                    </a>
-                </li>
-                <li class="category-item">
-                    <a href="sutras.html">
-                        <span class="category-icon">📿</span>
-                        Sutra Translations
-                    </a>
-                </li>
-                <li class="category-item">
-                    <a href="reflections.html">
-                        <span class="category-icon">💭</span>
-                        Daily Reflections
-                    </a>
-                </li>
-                <li class="category-item">
-                    <a href="videos.html">
-                        <span class="category-icon">🎥</span>
-                        Video Teachings
-                    </a>
-                </li>
-                <li class="category-item">
-                    <a href="journal.html">
-                        <span class="category-icon">📔</span>
-                        My Practice Journal
-                    </a>
-                </li>
-            </ul>
+    <div class="container">
+        <header>
+            <h1>☸️ Buddhist Teachings</h1>
+            <p class="subtitle">Wisdom for Daily Life and Spiritual Growth</p>
+        </header>
 
-            <!-- 日历组件 -->
-            <div class="calendar-widget">
-                <div class="calendar-header">
-                    <span class="calendar-nav" id="prevMonth">◀</span>
-                    <span class="calendar-title" id="calendarTitle"></span>
-                    <span class="calendar-nav" id="nextMonth">▶</span>
+        <div class="articles-grid">
+            <!-- Article 1: Mahayana and Hinayana Unity -->
+            <a href="mahayana-hinayana-unity.html" class="article-card">
+                <div class="article-header">
+                    <div class="article-icon">🕉️</div>
+                    <div class="article-title">The Unity of Mahayana and Hinayana</div>
                 </div>
-                <div class="calendar-grid" id="calendarGrid"></div>
-            </div>
-        </aside>
-        
-        <main class="content-area">
-            <div class="container">
-                <header>
-                    <h1>🙏 Bennie's Teachings</h1>
-                    <p class="subtitle">Wisdom from My Teacher</p>
-                </header>
-                
-                <div class="content">
-                    <h2 class="section-title">Latest Teachings</h2>
-                    <ul class="post-list" id="postList">
-                    </ul>
+                <div class="article-body">
+                    <p class="article-description">
+                        Discover the historical unity of Buddhist traditions and understand why divisions arose from practical factors, not doctrinal conflicts. Learn about the harmonious essence of the Buddha's complete teachings.
+                    </p>
+                    <span class="read-more">Read Article →</span>
                 </div>
-            </div>
-        </main>
+            </a>
+
+            <!-- Article 2: Your Thoughts Building Your Brain -->
+            <a href="your-thoughts-are-building-your-brain.html" class="article-card">
+                <div class="article-header">
+                    <div class="article-icon">🧠</div>
+                    <div class="article-title">Your Thoughts Are Building Your Brain</div>
+                </div>
+                <div class="article-body">
+                    <p class="article-description">
+                        Explore how your focused thoughts physically shape your neural pathways. Learn the five powerful principles for becoming the conscious architect of your own mind through neuronal remodeling.
+                    </p>
+                    <span class="read-more">Read Article →</span>
+                </div>
+            </a>
+        </div>
+
+        <footer>
+            <p>May all beings benefit from the Dharma 🙏</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">© 2025 Buddhist Teachings Collection</p>
+        </footer>
     </div>
-
-    <script>
-        const articlesData = [
-            {
-                title: "The Ten Wholesome Actions: Foundation of Buddhist Practice",
-                icon: "🙏",
-                date: "2026-01-13",
-                dateDisplay: "January 13, 2026",
-                excerpt: "In Buddhism, the ten wholesome actions are the foundation of all spiritual development, like the earth that nourishes the fruits of Buddhahood and Bodhisattvas.",
-                url: "ten-wholesome-actions.html",
-                isNew: true
-            },
-            {
-                title: "Your Thoughts Are Physically Building Your Brain. Here's the Manual.",
-                icon: "🧠",
-                date: "2026-01-12",
-                dateDisplay: "January 12, 2026",
-                excerpt: "Discover how your thoughts literally reshape your brain's neural pathways. Learn the science behind neuroplasticity and practical techniques to build the brain you want...",
-                url: "your-thoughts-are-building-your-brain.html",
-                isNew: false
-            },
-            {
-                title: "The Hammer: Are You Your Own Worst Enemy?",
-                icon: "🔨",
-                date: "2026-01-03",
-                dateDisplay: "January 3, 2026",
-                excerpt: "Ever feel like you're your own worst enemy? Getting in your own way, sabotaging your success, relationships, and happiness? Today we'll explore why this happens and how to stop it...",
-                url: "the-hammer.html",
-                isNew: false
-            }
-        ];
-
-        // 渲染文章列表
-        function renderPosts() {
-            const postList = document.getElementById('postList');
-            const sortedArticles = [...articlesData].sort((a, b) => {
-                return new Date(b.date) - new Date(a.date);
-            });
-            
-            postList.innerHTML = sortedArticles.map(article => `
-                <li class="post-item">
-                    <h3 class="post-title">
-                        <a href="${article.url}">
-                            ${article.icon} ${article.title}
-                            ${article.isNew ? '<span class="new-badge">NEW</span>' : ''}
-                        </a>
-                    </h3>
-                    <p class="post-date">${article.dateDisplay}</p>
-                    <p class="post-excerpt">${article.excerpt}</p>
-                </li>
-            `).join('');
-        }
-
-        // 创建日期到文章的映射
-        function createDateMap() {
-            const map = {};
-            articlesData.forEach(article => {
-                map[article.date] = article.url;
-            });
-            return map;
-        }
-
-        // 日历功能
-        let currentDate = new Date();
-        const dateMap = createDateMap();
-
-        function renderCalendar(year, month) {
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            const prevLastDay = new Date(year, month, 0);
-            const firstDayOfWeek = firstDay.getDay();
-            const daysInMonth = lastDay.getDate();
-            const daysInPrevMonth = prevLastDay.getDate();
-
-            const calendarTitle = document.getElementById('calendarTitle');
-            const calendarGrid = document.getElementById('calendarGrid');
-
-            const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            calendarTitle.textContent = `${monthNames[month]} ${year}`;
-
-            let html = '';
-            const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-            dayNames.forEach(day => {
-                html += `<div class="calendar-day-name">${day}</div>`;
-            });
-
-            // 上个月的日期
-            for (let i = firstDayOfWeek - 1; i >= 0; i--) {
-                const day = daysInPrevMonth - i;
-                html += `<div class="calendar-day other-month">${day}</div>`;
-            }
-
-            // 当前月的日期
-            const today = new Date();
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
-                const hasArticle = dateMap[dateStr];
-                
-                let classes = 'calendar-day';
-                if (isToday) classes += ' today';
-                if (hasArticle) classes += ' has-article';
-                
-                const onClick = hasArticle ? `onclick="window.location.href='${hasArticle}'"` : '';
-                
-                html += `<div class="${classes}" ${onClick}>${day}</div>`;
-            }
-
-            // 下个月的日期
-            const remainingDays = 42 - (firstDayOfWeek + daysInMonth);
-            for (let day = 1; day <= remainingDays; day++) {
-                html += `<div class="calendar-day other-month">${day}</div>`;
-            }
-
-            calendarGrid.innerHTML = html;
-        }
-
-        // 日历导航
-        document.getElementById('prevMonth').addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-        });
-
-        document.getElementById('nextMonth').addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-        });
-
-        // 初始化
-        renderPosts();
-        renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-    </script>
 </body>
 </html>
